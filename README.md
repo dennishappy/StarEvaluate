@@ -11,7 +11,6 @@ CGFloat starWidth = 20.f;
 CGFloat space = 5.f;  
 BOOL isCanTap = YES;   
 ZJD_StarEvaluateView *starView = [[ZJD_StarEvaluateView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44) starIndex:0 starWidth:starWidth space:space defaultImage:nil lightImage:nil isCanTap:isCanTap];
-        >
         
 // 回调   
 starView.starEvaluateBlock = ^(ZJD_StarEvaluateView * starView, NSInteger starIndex){   
