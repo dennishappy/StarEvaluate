@@ -20,6 +20,17 @@
 
 // 默认有五个星星
 - (instancetype)initWithFrame:(CGRect)frame
+                    starIndex:(NSInteger)index
+                    starWidth:(CGFloat)starWidth
+                        space:(CGFloat)space
+                 defaultImage:(UIImage *)defaultImage
+                   lightImage:(UIImage *)lightImage
+                     isCanTap:(BOOL)isCanTap {
+    
+    return [self initWithFrame:frame totalStars:0 starIndex:index starWidth:starWidth space:space defaultImage:defaultImage lightImage:lightImage isCanTap:isCanTap];
+}
+// 自定义星星数量
+- (instancetype)initWithFrame:(CGRect)frame
                    totalStars:(NSInteger)totalStars
                     starIndex:(NSInteger)index
                     starWidth:(CGFloat)starWidth
