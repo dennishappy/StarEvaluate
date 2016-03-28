@@ -47,6 +47,7 @@
     CGFloat BtnWidth = 64;
     CGFloat BtnHeight = 44;
     UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(self.view.width - 64, 20, BtnWidth, BtnHeight)];
+    btn.tag = 44;
     [btn setTitle:@"修改" forState:UIControlStateNormal];
     [btn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(editBtnAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -148,7 +149,7 @@
         CGFloat starWidth = 20.f;
         CGFloat space = 5.f;
         BOOL isCanTap = _isCanEdit;
-        ZJD_StarEvaluateView *starView = [[ZJD_StarEvaluateView alloc] initWithFrame:CGRectMake(LeftPadding, 0, self.view.width - LeftPadding, 44) starIndex:index starWidth:starWidth space:space defaultImage:nil lightImage:nil isCanTap:isCanTap];
+        ZJD_StarEvaluateView *starView = [[ZJD_StarEvaluateView alloc] initWithFrame:CGRectMake(LeftPadding, 0, self.view.width - LeftPadding, 44) totalStars:5 starIndex:index starWidth:starWidth space:space defaultImage:nil lightImage:nil isCanTap:isCanTap];
         starView.starEvaluateBlock = ^(ZJD_StarEvaluateView * starView, NSInteger starIndex){
             
             if (indexPath.row == 0) {
@@ -204,6 +205,11 @@
 - (void)editBtnAction:(UIButton *)btn {
     
     _isCanEdit = !_isCanEdit;
+    if (_isCanEdit) {
+        [btn setTitle:@"完成" forState:UIControlStateNormal];
+    } else {
+        [btn setTitle:@"修改" forState:UIControlStateNormal];
+    }
     [_tableView reloadData];
 }
 

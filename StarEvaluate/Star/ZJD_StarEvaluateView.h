@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "UIView+View.h"
-
 @interface ZJD_StarEvaluateView : UIView
 
 typedef void(^StarEvaluateBlock)(ZJD_StarEvaluateView *starView,NSInteger index);
@@ -21,6 +19,16 @@ typedef void(^StarEvaluateBlock)(ZJD_StarEvaluateView *starView,NSInteger index)
 @property (nonatomic, strong) UIImage *defaultImage;
 // 亮的星星
 @property (nonatomic, strong) UIImage *lightImage;
+
+// 默认有五个星星
+- (instancetype)initWithFrame:(CGRect)frame
+                   totalStars:(NSInteger)totalStars
+                    starIndex:(NSInteger)index
+                    starWidth:(CGFloat)starWidth
+                        space:(CGFloat)space
+                 defaultImage:(UIImage *)defaultImage
+                   lightImage:(UIImage *)lightImage
+                     isCanTap:(BOOL)isCanTap;
 
 // 默认有五个星星
 - (instancetype)initWithFrame:(CGRect)frame

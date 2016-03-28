@@ -7,11 +7,20 @@
 //
 
 #import "ZJD_StarEvaluateView.h"
+#import "UIView+View.h"
+
+@interface ZJD_StarEvaluateView (){
+    
+    NSInteger _totalStars;
+}
+
+@end
 
 @implementation ZJD_StarEvaluateView
 
 // 默认有五个星星
 - (instancetype)initWithFrame:(CGRect)frame
+                   totalStars:(NSInteger)totalStars
                     starIndex:(NSInteger)index
                     starWidth:(CGFloat)starWidth
                         space:(CGFloat)space
@@ -21,6 +30,12 @@
     
     self = [super initWithFrame:frame];
     if (self) {
+        
+        if (totalStars <= 0) {
+            _totalStars = 5;
+        } else {
+            _totalStars = totalStars;
+        }
         
         if (defaultImage) {
             self.defaultImage = defaultImage;
@@ -34,7 +49,7 @@
             self.lightImage = [UIImage imageNamed:@"五星评价_黄"];
         }
         
-        for (NSInteger j = 0; j < 5; j++) {
+        for (NSInteger j = 0; j < _totalStars; j++) {
             UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(j* (starWidth + space), 0, starWidth, self.height)];
             
             btn.enabled = isCanTap;
@@ -50,7 +65,7 @@
             [self addSubview:btn];
             
             // self.width
-            self.width = (starWidth + space) * 5;
+            self.width = (starWidth + space) * _totalStars;
         }
     }
     return self;
@@ -58,7 +73,7 @@
 
 - (void)starTapBtn:(UIButton *)btn{
     
-    for (NSInteger i = 1; i <= 5; i++) {
+    for (NSInteger i = 1; i <= _totalStars; i++) {
         UIButton *starBtn = (UIButton *)[self viewWithTag:i];
         if (i <= btn.tag) {
             [starBtn setImage:self.lightImage forState:UIControlStateNormal];
